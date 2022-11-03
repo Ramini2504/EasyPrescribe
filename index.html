@@ -49,22 +49,22 @@
                               </figure>
                         </div>
                     </div>
-                    <div class="row mx-1 text-dark rounded  w-70" style="background-color :rgb(202, 202, 202)"><div class="col">Date : <strong id="CuDate">25-04-2003</strong></div></div>
+                    <div class="row mx-1 text-dark rounded  w-70" style="background-color :rgb(202, 202, 202)"><div class="col">Date : <strong id="CuDate"></strong></div></div>
                     <div class="row my-1 mx-1 text-dark rounded" style="background-color :rgb(202, 202, 202)">
-                        <div class="col">Name : <strong id="tempName">ipsum dolor, sit amet consectetur adipisicing elit. Aperiam, rem!</strong></div>
-                        <div class="col">Age : <strong  id="tempAge">Lorem, ipsum.</strong></div>
-                        <div class="col">Sex : <strong id="tempSex">lorem</strong></div>
+                        <div class="col">Name : <strong id="tempName"></strong></div>
+                        <div class="col">Age : <strong  id="tempAge"></strong></div>
+                        <div class="col">Sex : <strong id="tempSex"></strong></div>
                     </div>
                     <div class="row mb-2 mx-1 text-dark rounded" style="background-color :rgb(202, 202, 202)">
-                        <div class="col">Height : <strong id="tempHeight">lorem</strong></div>
-                        <div class="col">Weight : <strong  id="tempWeight">lorem</strong></div>
+                        <div class="col">Weight : <strong  id="tempWeight"></strong></div>
                     </div>
                 </div> 
                 <hr>
                 <div class="row border mx-1 mb-1 rounded" id="newMedic">
-                    <div class="text-dark fs-1 font-weight-bold" id="medicine">
-                        Dolo 10mg<br>
-                        <i class="ms-2 me-4" id="1"></i><i class="mx-4" id="2"></i><i class="mx-4" id="3"></i>   
+                    <div class="text-dark fs-1 font-weight-bold">
+                        <div class="col" id="newNode">
+                            
+                        </div>                      
                     </div>
                     <div id="temp">
                         <p></p>
@@ -82,8 +82,6 @@
                 <div class="input-group my-2 w-70">
                     <span class="input-group-text text-dark">Age</span>
                     <input type="text" class="form-control" id="inputAge">
-                    <span class="input-group-text text-dark">Height</span>
-                    <input type="text" class="form-control" id="inputHeight">
                 </div>
                 <div class="input-group my-2 w-70">
                     <span class="input-group-text text-dark">SEX</span>
@@ -97,30 +95,35 @@
                     </button>
                 </div>
             </div>
-            <div class="container my-3 me-3 border rounded w-70" style="background-color: rgb(202, 202, 202); width: 500px;">
+            <div class="container my-3 me-3 border rounded w-70" style="background-color: rgb(202, 202, 202); width: 500px;" id="newMedic">
                 <p class="display-6 text-center bolder">Add Medicine:</p>  
-                <div class="container-fluid m-2">
-                    <form class="d-flex">
-                        <input class="form-control" type="text" id="inputMedic"> 
-                    </form>
+                <div class="font-weight-bold" id="newNode">
+                    <div class="container-fluid m-2">
+                        <form class="d-flex" id="form">
+                            <input class="form-control" type="text" id="inputMedic" placeholder="Type Medicine.."> 
+                        </form>
+                    </div>
+                    <div class="ms-5">
+                        <form id="form1">
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Morning">
+                            <label class="form-check-label" for="inlineCheckbox1">Morning</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Afternoon">
+                            <label class="form-check-label" for="inlineCheckbox2">Afternoon</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Night">
+                            <label class="form-check-label" for="inlineCheckbox3">Night</label>
+                          </div>
+                        </form>
+                          <div class="text-center">
+                            <button class="btn btn-primary mx-5 mt-4 mb-2" onclick="add()">ADD</button>
+                            <button class="btn btn-warning mx-5 mt-4 mb-2" style="color:white;" onclick="cls()">CLEAR</button>
+                          </div>
+                    </div>
                 </div>
-                <div class="ms-5">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Morning">
-                        <label class="form-check-label" for="inlineCheckbox1">Morning</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Afternoon">
-                        <label class="form-check-label" for="inlineCheckbox2">Afternoon</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Night">
-                        <label class="form-check-label" for="inlineCheckbox3">Night</label>
-                      </div>
-                </div>
-                <button class="btn btn-primary mx-5 mt-4 mb-2" onclick="add()">add</button>
-                <button class="btn btn-warning mx-5 mt-4 mb-2">clear</button>
-                <button class="btn btn-danger mx-4 mt-4 mb-2">remove</button>
             </div>
             <div class="container my-3 me-3 border rounded w-70 text-center" style="background-color: rgb(202, 202, 202); width: 500px;">
                 <button class="btn btn-danger ml-3 my-2 w-50" style="height:50px; border-color: red;"><i class="fa-solid fa-share mx-2"></i><strong>Mail</strong></button>
@@ -129,80 +132,83 @@
         </div>
     </div>
     <script>
+        var a = 0;
         function post() {
             let nameFeild = document.getElementById('inputName').value
             let ageFeild = document.getElementById('inputAge').value
             let sexFeild = document.getElementById('inputSex').value
-            let heightFeild = document.getElementById('inputHeight').value
             let weightFeild = document.getElementById('inputWeight').value
             
             let nameT = document.getElementById('tempName')
             let ageT = document.getElementById('tempAge')
             let sexT = document.getElementById('tempSex')
-            let heightT = document.getElementById('tempHeight')
             let weightT = document.getElementById('tempWeight')
             let dateT = document.getElementById('CuDate')
             
-            const d = new Date()
+            var dateObj = new Date();
+            var month = dateObj.getUTCMonth() + 1; //months from 1-12
+            var day = dateObj.getUTCDate();
+            var year = dateObj.getUTCFullYear();
+            var time = dateObj.getTime();
+            var hrs = dateObj.getHours();
+            var mins = dateObj.getMinutes();
+            var sec = dateObj.getSeconds();
+            const d = day+"-"+month+"-"+year+"(Time - "+hrs+":"+mins+":"+sec+")"
             dateT.innerHTML = d
             nameT.innerHTML = nameFeild
             ageT.innerHTML = ageFeild
             sexT.innerHTML = sexFeild
             weightT.innerHTML = weightFeild
-            heightT.innerHtml = heightFeild
 
         }
         function add() {
-            let Medic = document.getElementById('inputMedic').value.toUpperCase()
-            let Medicine = document.getElementById('Medicine')
-            Medicine.innerHTML = Medic;
-            let newNode = document.createElement("div");
-            newNode.classList.add("text-dark");
-            newNode.classList.add("fs-1");
-            newNode.classList.add("font-weight-bold");
-            let addMedic = document.getElementById("newMedic");
-            let p = document.getElementById("temp");
-        
-            addMedic.insertBefore(newNode, p);
-
-            let value1 = document.getElementById("inlineCheckbox1").value
-            let value2 = document.getElementById("inlineCheckbox2").value
-            let value3 = document.getElementById("inlineCheckbox3").value
+            let Medic = document.getElementById("inputMedic").value
             let check1 = document.getElementById("inlineCheckbox1")
             let check2 = document.getElementById("inlineCheckbox2")
             let check3 = document.getElementById("inlineCheckbox3")
-            let i1 = document.getElementById("1").value
-            let i2 = document.getElementById("2").value
-            let i3 = document.getElementById("3").value
+
+            var new_div = document.createElement("div")
+            var new_i_1 = document.createElement("i")
+
+            new_div.innerHTML = (++a)+".  "+Medic
+            document.getElementById("newNode").appendChild(new_div)            
+
             if(check1.checked && check2.checked && check3.checked) {
-                document.getElementById("1").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("2").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("3").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
+                new_i_1.innerHTML = "<i class=\"fa-solid fa-circle\"></i>------<i class=\"fa-solid fa-circle\"></i>------<i class=\"fa-solid fa-circle\"></i>"
+                document.getElementById("newNode").appendChild(new_i_1)
             }else if(check1.checked && check2.checked) {
-                document.getElementById("1").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("2").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("3").innerHTML = "<i class=\"fa-regular fa-circle\"></i>"
+                new_i_1.innerHTML = "<i class=\"fa-solid fa-circle\"></i>------<i class=\"fa-solid fa-circle\"></i>------<i class=\"fa-regular fa-circle\"></i>"
+                document.getElementById("newNode").appendChild(new_i_1)
             }else if(check1.checked && check3.checked) {
-                document.getElementById("1").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("3").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("2").innerHTML = "<i class=\"fa-regular fa-circle\"></i>"
+                new_i_1.innerHTML = "<i class=\"fa-solid fa-circle\"></i>------<i class=\"fa-regular fa-circle\"></i>-----<i class=\"fa-solid fa-circle\"></i>"
+                document.getElementById("newNode").appendChild(new_i_1)
             }else if(check2.checked && check3.checked) {
-                document.getElementById("2").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("3").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("1").innerHTML = "<i class=\"fa-regular fa-circle\"></i>"
+                new_i_1.innerHTML = "<i class=\"fa-regular fa-circle\"></i>------<i class=\"fa-solid fa-circle\"></i>------<i class=\"fa-solid fa-circle\"></i>"
+                document.getElementById("newNode").appendChild(new_i_1)
             }else if(check1.checked) {
-                document.getElementById("1").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("2").innerHTML = "<i class=\"fa-regular fa-circle\"></i>"
-                document.getElementById("3").innerHTML = "<i class=\"fa-regular fa-circle\"></i>"
+                new_i_1.innerHTML = "<i class=\"fa-solid fa-circle\"></i>------<i class=\"fa-regular fa-circle\"></i>------<i class=\"fa-regular fa-circle\"></i>"
+                document.getElementById("newNode").appendChild(new_i_1)
             }else if(check2.checked) {
-                document.getElementById("2").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("1").innerHTML = "<i class=\"fa-regular fa-circle\"></i>"
-                document.getElementById("3").innerHTML = "<i class=\"fa-regular fa-circle\"></i>"
+                new_i_1.innerHTML = "<i class=\"fa-regular fa-circle\"></i>-----<i class=\"fa-solid fa-circle\"></i>------<i class=\"fa-regular fa-circle\"></i>"
+                document.getElementById("newNode").appendChild(new_i_1)
             }else if(check3.checked) {
-                document.getElementById("3").innerHTML = "<i class=\"fa-solid fa-circle\"></i>"
-                document.getElementById("1").innerHTML = "<i class=\"fa-regular fa-circle\"></i>"
-                document.getElementById("2").innerHTML = "<i class=\"fa-regular fa-circle\"></i>"
+                new_i_1.innerHTML = "<i class=\"fa-regular fa-circle\"></i>------<i class=\"fa-regular fa-circle\"></i>-----<i class=\"fa-solid fa-circle\"></i>"
+                document.getElementById("newNode").appendChild(new_i_1)
+                
+            }else {
+                new_i_1.innerHTML = " "
+                document.getElementById("newNode").appendChild(new_i_1)
             }
+            var form = document.getElementById('form');
+            var form1 = document.getElementById('form1')
+            form.reset();
+            form1.reset();
+        }
+        function cls() {
+            var form = document.getElementById('form');
+            var form1 = document.getElementById('form1')
+            form.reset();
+            form1.reset();
         }
         function Pprint() {
             var printContents = document.getElementById("presc").innerHTML;
